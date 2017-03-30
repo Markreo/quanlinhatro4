@@ -20,7 +20,7 @@
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
        <div class="box">
-           <g:form url="[controller: 'home', action: 'saveFirstRegion', id: user.id]" class="form-horizontal" id="createFirstRegion">
+           <g:form url="[controller: 'region', action: 'saveFirstRegion', id: user.id]" class="form-horizontal" id="createFirstRegion">
 
                <div class="form-group">
                    <h3 class="title">Tạo một khu quản lí</h3>
@@ -102,16 +102,15 @@
     </div>
 </div>
 <script>
-    $("#createFirstRegion").validate()
+
     function addNewDefault() {
-        var specials = $("input[name='special']")
-        var  realy = []
+        var specials = $("input[name='special']");
+        var  realy = [];
         $.each(specials, function (index, sp) {
             if($(sp).val() != 'null') {
                 realy.push($(sp).val())
             }
-        })
-        console.log(realy)
+        });
         $.post("${createLink(controller: 'defaultRegion', action: 'create')}", {realy: realy}, function (html) {
             bootbox.dialog({
                 message: html,
@@ -124,7 +123,6 @@
                         callback: function() {
 
                             $("#create_default").submit();
-                            console.log()
                             return false
                         }
                     }

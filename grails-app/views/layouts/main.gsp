@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-	<title>Quản lí nhà trọ</title>
+	<title><g:layoutTitle default="Quản lí nhà trọ"></g:layoutTitle></title>
 
 	<!--=== CSS ===-->
 
@@ -41,7 +41,6 @@
 	<script type="text/javascript" src="${resource(dir: 'assets/plugins/jquery-ui', file: 'jquery-ui-1.10.2.custom.min.js')}"></script>
 
 	<script type="text/javascript" src="${resource(dir: 'bootstrap/js', file: 'bootstrap.min.js')}"></script>
-	<script type="text/javascript" src="${resource(dir: 'bootstrap/js', file: 'bootstrap.js')}"></script>
 	<script type="text/javascript" src="${resource(dir: 'assets/js/libs', file: 'lodash.compat.min.js')}"></script>
 
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -116,6 +115,10 @@
 
 	%{--qlnhatro--}%
 	<script type="text/javascript" src="${resource(dir: 'assets/js', file: 'qlnhatro.js')}"></script>
+	<script src="${resource(dir: 'assets/js', file: 'wizard-custom.js')}"></script>
+	%{--<link href="${resource(dir: 'assets/css', file: 'beyond.min.css')}" rel="stylesheet"/>--}%
+
+	<g:layoutHead/>
 </head>
 
 <body>
@@ -128,8 +131,8 @@
 	<g:render template="/layouts/sidebar"/>
 	<!-- /Sidebar -->
 
-	<div id="content">
-		<div class="container">
+	<div >
+		<div class="container" id="content">
 			<g:layoutBody/>
 		</div>
 	</div>

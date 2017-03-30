@@ -13,6 +13,14 @@
 </head>
 
 <body>
-
+<ul>
+    <li>Chuyển qua kiểu ajax</li>
+    <li>Thêm model RoomType: xác định các loại phòng:<ul>
+        <li>Thêm model trong mục setting của region</li>
+        <li>thêm trường roomtype vào room, các giá trị được trong type được parse qua room</li>
+        <li>vẫn edit được các giá trị</li>
+    </ul> </li>
+    <li></li>
+</ul>
 </body>
 </html>

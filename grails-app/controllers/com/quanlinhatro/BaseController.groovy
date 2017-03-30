@@ -19,10 +19,13 @@ class BaseController {
         if(controllerName == 'defaultRegion' & actionName == 'lineNew') {
             return true
         }
+        if(controllerName == 'region' & actionName == 'saveFirstRegion') {
+            return true
+        }
         if(user) {
             session.user = user
-            println(user)
-            if(!user.currenRegion) {
+            if(!user.currentRegion) {
+                println("REDIRECT!")
                 redirect(action: 'createFirstRegion')
                 return false
             }

@@ -1,149 +1,157 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: giapn
+  Date: 3/29/2017
+  Time: 9:20 PM
+--%>
 
-<%@ page import="com.quanlinhatro.Room" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'room.label', default: 'Room')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#show-room" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-room" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list room">
-			
-				<g:if test="${roomInstance?.name}">
-				<li class="fieldcontain">
-					<span id="name-label" class="property-label"><g:message code="room.name.label" default="Name" /></span>
-					
-						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${roomInstance}" field="name"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roomInstance?.status}">
-				<li class="fieldcontain">
-					<span id="status-label" class="property-label"><g:message code="room.status.label" default="Status" /></span>
-					
-						<span class="property-value" aria-labelledby="status-label"><g:fieldValue bean="${roomInstance}" field="status"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roomInstance?.region}">
-				<li class="fieldcontain">
-					<span id="region-label" class="property-label"><g:message code="room.region.label" default="Region" /></span>
-					
-						<span class="property-value" aria-labelledby="region-label"><g:link controller="region" action="show" id="${roomInstance?.region?.id}">${roomInstance?.region?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roomInstance?.amount}">
-				<li class="fieldcontain">
-					<span id="amount-label" class="property-label"><g:message code="room.amount.label" default="Amount" /></span>
-					
-						<span class="property-value" aria-labelledby="amount-label"><g:fieldValue bean="${roomInstance}" field="amount"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roomInstance?.price}">
-				<li class="fieldcontain">
-					<span id="price-label" class="property-label"><g:message code="room.price.label" default="Price" /></span>
-					
-						<span class="property-value" aria-labelledby="price-label"><g:fieldValue bean="${roomInstance}" field="price"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roomInstance?.maxRenter}">
-				<li class="fieldcontain">
-					<span id="maxRenter-label" class="property-label"><g:message code="room.maxRenter.label" default="Max Renter" /></span>
-					
-						<span class="property-value" aria-labelledby="maxRenter-label"><g:fieldValue bean="${roomInstance}" field="maxRenter"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roomInstance?.dueDate}">
-				<li class="fieldcontain">
-					<span id="dueDate-label" class="property-label"><g:message code="room.dueDate.label" default="Due Date" /></span>
-					
-						<span class="property-value" aria-labelledby="dueDate-label"><g:fieldValue bean="${roomInstance}" field="dueDate"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roomInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="room.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${roomInstance?.dateCreated}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roomInstance?.lastUpdated}">
-				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="room.lastUpdated.label" default="Last Updated" /></span>
-					
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${roomInstance?.lastUpdated}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roomInstance?.lease}">
-				<li class="fieldcontain">
-					<span id="lease-label" class="property-label"><g:message code="room.lease.label" default="Lease" /></span>
-					
-						<g:each in="${roomInstance.lease}" var="l">
-						<span class="property-value" aria-labelledby="lease-label"><g:link controller="lease" action="show" id="${l.id}">${l?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roomInstance?.renter}">
-				<li class="fieldcontain">
-					<span id="renter-label" class="property-label"><g:message code="room.renter.label" default="Renter" /></span>
-					
-						<g:each in="${roomInstance.renter}" var="r">
-						<span class="property-value" aria-labelledby="renter-label"><g:link controller="renter" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roomInstance?.use}">
-				<li class="fieldcontain">
-					<span id="use-label" class="property-label"><g:message code="room.use.label" default="Use" /></span>
-					
-						<g:each in="${roomInstance.use}" var="u">
-						<span class="property-value" aria-labelledby="use-label"><g:link controller="use" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form url="[resource:roomInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${roomInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
+<head>
+    <title>Phòng ${room.name}</title>
+    <meta name="layout"content="main"/>
+</head>
+
+<body>
+<qlnhatro:breadcrumbs current="Phòng ${room.name}"/>
+<div class="row">
+
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="box">
+            <div class="page-show">
+                <div class="page-show-header">
+                    <img class="hidden-xs" src="${resource(file: 'images/home_1.png')}" width="100" height="100"/>
+                    <div class="show-header">
+                        <div class="show-title">
+                            <span class="title">Phòng ${room.name}</span>
+                            <div class="group-button">
+
+                            </div>
+                        </div>
+                        <div style="margin-left: -15px; margin-right: -15px">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <table class="infor">
+                                    <tr>
+                                        <td>Tình trạng</td>
+                                        <td>${room.status.name}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Giá phòng</td>
+                                        <td><g:formatNumber number="${room.price}" format="###,###,###" locale="en"/> đ</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Loại phòng</td>
+                                        <td>Loại 2 </td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <table class="infor">
+                                    <tr>
+                                        <td>Số điện</td>
+                                        <td>123</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Số nước</td>
+                                        <td>47</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Cập nhật</td>
+                                        <td>${new Date().format('dd-MM-yyyy')}</td>
+                                    </tr>
+                                </table>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <table class="infor no-border">
+                                    <tr>
+                                        <td>Mô tả</td>
+                                        <td>Phòng có ban công rộng</td>
+                                    </tr>
+                                </table>
+                            <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="page-show-body">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-7 col-xs-12">
+                            <div id="room_show_use">
+                                <g:form controller="use" action="save" class="form-horizontal">
+
+                                   %{-- <table width="100%" class="qlnhatro-table2">
+                                        <tr>
+                                            <th>Tên</th>
+                                            <th>Đơn vị</th>
+                                            <th class="right">Đơn giá</th>
+                                        </tr>
+                                        <g:each in="${room.use}" var="use">
+                                            <tr>
+                                                <td>${use.name}</td>
+                                                <td>${use.unit.name}</td>
+                                                <td class="right"><g:formatNumber number="${use.currentPrice}" format="###,###,###" locale="en"/> đ </td>
+                                            </tr>
+                                        </g:each>
+                                    </table>--}%
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th  class="text-center hidden-xs">#</th>
+                                            <th>Tên</th>
+                                            <th class="hidden-xs">Đơn vị</th>
+                                            <th>Đơn giá</th>
+                                            <th width="155px">Cập nhật</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <g:each in="${room.use}" var="use" status="i">
+                                            <tr>
+                                                <td class="text-center hidden-xs">${i + 1}</td>
+                                                <td>${use.name}</td>
+                                                <td class="hidden-xs">${use.unit.name}</td>
+                                                <td><g:formatNumber number="${use.currentPrice}" format="###,###,###" locale="en"/> đ </td>
+                                                <td>
+
+                                                    <span class="label label-info"><i class="icon-search"></i> Xem</span>
+                                                    <span class="label label-warning"><i class="icon-edit"></i> Sửa</span>
+                                                    <span class="label label-danger"><i class="icon-trash"></i> Xóa</span>
+
+                                                </td>
+                                            </tr>
+                                        </g:each>
+                                        </tbody>
+                                    </table>
+
+                                </g:form>
+                            </div>
+
+                            <div>
+                                chart
+                            </div>
+                            <br>
+                        </div>
+                        <div class="col-md-4 col-sm-5 col-xs-12" >
+                            <div>
+                                <ul>
+                                    <li>Đang cho thuê: Danh sách người thuê</li>
+                                    <li>Đang --------: Lịch sử thuê phòng</li>
+                                </ul>
+                            </div>
+                            <br>
+                            <div style="border: 1px solid blue">
+                                Note
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

@@ -10,8 +10,4 @@ class HomeController extends BaseController {
     def index() {
         println("indexs")
     }
-
-    def saveFirstRegion() {
-        println "save first region"
-    }
 }

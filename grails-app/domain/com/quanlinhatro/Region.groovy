@@ -10,6 +10,7 @@ class Region {
 
     String name
     String address
+    String note
     static belongsTo = [user: User]
     static hasMany = [room: Room, default: DefaultRegion, renter: Renter]
 
@@ -21,10 +22,12 @@ class Region {
         address nullable: true
         user nullable: false
         room nullable: true
+        note nullable: true
         dateCreated()
     }
 
     static mapping = {
         table('ql_region')
+        note type: 'text'
     }
 }

@@ -22,6 +22,7 @@ class Room{
 
     String name
     Status status = Status.TRONG
+    String note
     static belongsTo = [region: Region]
     static hasMany = [renter: Renter,
                       lease: Lease,
@@ -40,12 +41,13 @@ class Room{
         name nullable: false, unique: ['region']
         status nullable: false
         region nullable: false
-//        renters nullable: true
-//        leases nullable: true
+        renter nullable: true
+        lease nullable: true
         amount nullable: true
         price nullable: false //to service
         maxRenter nullable: true
         dueDate nullable: false
+        note  nullable: true
         dateCreated()
     }
 

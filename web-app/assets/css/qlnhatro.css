@@ -11,3 +11,63 @@ h3.title {
 .no-padding-right {
     padding-right: 0px !important;
 }
+
+.widget.box {
+    -webkit-box-shadow:  0 0 3px rgba(0,0,0,.1);
+    -moz-box-shadow:  0 0 3px rgba(0,0,0,.1);
+    box-shadow:  0 0 3px rgba(0,0,0,.1);
+}
+
+
+.qlnhatro-table1 {
+    border-collapse:separate;
+    border-spacing:0px 15px;
+    width: 100%;
+}
+.qlnhatro-table1 tr td {
+    border: 1px solid #d9d9d9;
+    border-right: 0px;
+    padding: 5px 10px;
+}
+
+.qlnhatro-table1 tr td:first-child {
+    width: 50px;
+    padding: 5px 5px;
+}
+
+.qlnhatro-table1 tr td:nth-child(2) {
+    width: 210px;
+}
+
+.qlnhatro-table1 tr td:last-child {
+    border-right: 1px solid #d9d9d9;
+}
+
+.qlnhatro-table1 tr td:last-child a {
+    border-radius: 50%;
+    padding: 0 5px;
+    position: absolute;
+    right: 4px;
+}
+
+
+
+/***********ROOM*************8*/
+.page-show { margin-top: 30px}
+.page-show .page-show-header {border:1px solid #d9d9d9; padding: 10px; padding-bottom: 0px; border-radius: 7px; position: relative;min-height: 120px; margin-bottom: 20px}
+.page-show .page-show-header img{ position: absolute; left: 10px; top: 17%}
+.page-show .page-show-header .show-header{padding-left: 120px; margin-bottom:6px}
+@media (max-width: 767px) {
+    .page-show .page-show-header .show-header{padding-left: 0px; margin-bottom:6px}
+}
+.page-show .page-show-header .show-title {font-size: 20px;margin-top: 5px;background: rgba(235, 235, 235, 0.8);border-radius: 3px;padding: 3px 10px;; font-weight: 600; position: relative}
+.page-show .page-show-header .show-title .title{}
+.page-show .page-show-header .show-title .group-button {position: absolute;right: 0;top: 0;height: 100%;font-size: 13px; vertical-align: middle}
+.page-show .page-show-header .infor {width: 100%}
+.page-show .page-show-header .infor td {border-bottom: 1px solid #d9d9d9; height: 23px}
+.page-show .page-show-header .infor.no-border td {border-bottom: 0}
+.page-show .page-show-header .infor td:nth-child(2) {text-align: right}
+
+.page-show .page-show-body {padding-top:10px}
+
+

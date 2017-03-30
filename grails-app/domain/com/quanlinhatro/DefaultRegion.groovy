@@ -7,7 +7,6 @@ class DefaultRegion {
 
     String name
     Unit unit = Unit.TIME
-    long currentValue = 0//removes
     long currentPrice
 
 
@@ -18,18 +17,26 @@ class DefaultRegion {
     Date dateCreated
     Date lastUpdated
 
+    static belongsTo = [region: Region]
+
 
     static constraints = {
         unit nullable: false
-        currentValue nullable: true
         currentPrice nullable: false
         tiendien nullable: false
         tiennuoc nullable: false
         tienphong nullable: false
+        region nullable: false
         dateCreated()
     }
 
     static mapping = {
         table('ql_default')
+    }
+
+    Use parseToUse(long currentValue = 0){
+        return new Use(name: this.name, unit: this.unit,
+                currentPrice: this.currentPrice, currentValue: currentValue,
+                tiendien: this.tiendien, tienphong: this.tienphong, tiennuoc: this.tiennuoc)
     }
 }

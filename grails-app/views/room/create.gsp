@@ -1,38 +1,49 @@
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: giapn
+  Date: 3/26/2017
+  Time: 11:06 PM
+--%>
+
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'room.label', default: 'Room')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#create-room" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="create-room" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${roomInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${roomInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form url="[resource:roomInstance, action:'save']" >
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
+<head>
+    <title></title>
+    <meta name="layout" content="main"/>
+</head>
+
+<body>
+<qlnhatro:breadcrumbs current="Đăng kí phòng"/>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top:20px">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <h1>Phòng:<span style="color: #ddd"> chưa đặt tên</span></h1>
+            <p style="color: #ccc">Ghi chú</p>
+        </div>
+        <br>
+        <div class="col-md-8 col-sm-7 col-xs-12">
+            <div class="widget box">
+                <div class="widget-header">
+                    <h4>Thông tin cơ bản</h4>
+                </div>
+                <div class="widget-content">
+                    Tên phòng
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-5 col-xs-12">
+                <div class="widget box">
+                    <div class="widget-header">
+                        <h4>Thông tin dịch vụ</h4>
+                    </div>
+                    <div class="widget-content">
+                        Tên phòng
+
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>

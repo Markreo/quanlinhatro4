@@ -15,6 +15,8 @@ class Use {
     Date dateCreated
     Date lastUpdated
 
+    static belongsTo = [room: Room]
+
 
     static constraints = {
         unit nullable: false
@@ -23,6 +25,7 @@ class Use {
         tiendien nullable: false
         tiennuoc nullable: false
         tienphong nullable: false
+        room nullable: false
         dateCreated()
     }
 

@@ -20,7 +20,7 @@ class User implements Serializable {
 
 	static hasMany = [region: Region]
 
-	Region currenRegion
+	Region currentRegion//TODO: fix name
 
 	User(String username, String password) {
 		this()
@@ -52,7 +52,7 @@ class User implements Serializable {
 		username blank: false, unique: true
 		password blank: false
 		region nullable: true
-		currenRegion nullable: true
+		currentRegion nullable: true
 	}
 
 	static mapping = {

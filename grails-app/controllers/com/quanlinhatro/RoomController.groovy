@@ -1,104 +1,54 @@
 package com.quanlinhatro
 
-
-
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
-
-@Transactional(readOnly = true)
 class RoomController extends BaseController{
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Room.list(params), model:[roomInstanceCount: Room.count()]
+    def index() {
+        render(view: 'list', model: [rooms: Room.findAllByRegion(user.currentRegion)])
     }
 
-    def show(Room roomInstance) {
-        respond roomInstance
+    def edit() {
+        render(view: 'edit')
     }
 
-    def create() {
-        respond new Room(params)
+    def formCreate() {
+        def df = DefaultRegion.countByRegionAndUnitAndTienphong(user.currentRegion, Unit.NG, true)
+        render(template: 'formCreate', model: [ng: df != 0])
     }
 
-    @Transactional
-    def save(Room roomInstance) {
-        if (roomInstance == null) {
-            notFound()
-            return
+    def save() {
+        def room = new Room(params.get("room"))
+        room.region = user.currentRegion
+
+
+
+        if(room.hasErrors() || !room.save(flush: true)) {
+            println "errr- " + room.errors
         }
 
-        if (roomInstance.hasErrors()) {
-            respond roomInstance.errors, view:'create'
-            return
+        DefaultRegion.findAllByRegion(user.currentRegion).each { df->
+            room.addToUse(df.parseToUse())
         }
 
-        roomInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'room.label', default: 'Room'), roomInstance.id])
-                redirect roomInstance
-            }
-            '*' { respond roomInstance, [status: CREATED] }
+        if(room.hasErrors() || !room.save(flush: true))
+        {
+            println ('err save use :' + room.errors)
         }
+
+        redirect(action: 'show', model: [id: room.id])
     }
 
-    def edit(Room roomInstance) {
-        respond roomInstance
+    def update(long id) {
+     //to save
     }
 
-    @Transactional
-    def update(Room roomInstance) {
-        if (roomInstance == null) {
-            notFound()
-            return
+    def show(long id) {
+        def room = Room.get(id)
+        if(room) {
+            render(view: 'show', model: [room: room])
+        } else {
+            response.status = 404
+            render(view: '/notFound')
         }
 
-        if (roomInstance.hasErrors()) {
-            respond roomInstance.errors, view:'edit'
-            return
-        }
-
-        roomInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Room.label', default: 'Room'), roomInstance.id])
-                redirect roomInstance
-            }
-            '*'{ respond roomInstance, [status: OK] }
-        }
-    }
-
-    @Transactional
-    def delete(Room roomInstance) {
-
-        if (roomInstance == null) {
-            notFound()
-            return
-        }
-
-        roomInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Room.label', default: 'Room'), roomInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'room.label', default: 'Room'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
     }
 }

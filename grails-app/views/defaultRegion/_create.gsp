@@ -38,7 +38,7 @@
     <div class="form-group">
         <label class="col-md-3 col-sm-3 col-xs-3 control-label text-right" >Tên:</label>
         <div class="col-md-9 col-sm-9 col-xs-9">
-            <input type="text" name="default.name" class="form-control required" placeholder="Tên khu" required>
+            <input type="text" name="default.name" class="form-control required" placeholder="Tên" required>
         </div>
     </div>
     <div class="form-group">

@@ -14,7 +14,7 @@
                     </select>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3 no-padding-right">
-                    <input class="form-control" name="default.currentPrice" type="text" placeholder="Tiền điện"/>
+                    <input class="form-control" name="default.currentPrice" type="text" placeholder="Tiền điện" required/>
                 </div>
                 <div class="col-md-1 col-sm-1 col-xs-1 no">
                     <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
@@ -39,7 +39,7 @@
                     </select>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3 no-padding-right">
-                    <input class="form-control" name="default.currentPrice" type="text"  placeholder="Tiền nước"/>
+                    <input class="form-control" name="default.currentPrice" type="text"  placeholder="Tiền nước" required/>
                 </div>
                 <div class="col-md-1 col-sm-1 col-xs-1 no">
                     <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="col-md-3 col-sm-3 col-xs-3 no-padding-right">
-                    <input class="form-control" name="default.currentPrice" type="text" placeholder="Tiền phòng"/>
+                    <input class="form-control" name="default.currentPrice" type="text" placeholder="Tiền phòng" required/>
                 </div>
                 <div class="col-md-1 col-sm-1 col-xs-1 no">
                     <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
@@ -80,14 +80,14 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="col-md-2 col-sm-2 hidden-xs"></div>
                 <div class="col-md-3 col-sm-3 col-xs-4 no-padding-right">
-                    <input class="form-control" name="default.name" type="text" value="${df?.name}" placeholder="Tên"/>
+                    <input class="form-control" name="default.name" type="text" value="${df?.name}" placeholder="Tên" required/>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3 no-padding-right">
                     <g:hiddenField name="special" value="null"/>
                     <g:select name="default.unit" from="${com.quanlinhatro.Unit.values()}" optionValue="name" value="${df?.unit}" class="form-control"/>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3 no-padding-right">
-                    <input class="form-control" name="default.currentPrice" type="text" value="${df.currentPrice}" placeholder="Giá" data-mask="(999) 999-9999"/>
+                    <input class="form-control" name="default.currentPrice" type="text" value="${df.currentPrice}" placeholder="Giá" required/>
                 </div>
                 <div class="col-md-1 col-sm-1 col-xs-1 no">
                     <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
