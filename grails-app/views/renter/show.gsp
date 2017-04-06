@@ -4,122 +4,173 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'renter.label', default: 'Renter')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
+		<title>Khách thuê</title>
 	</head>
 	<body>
-		<a href="#show-renter" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+	<qlnhatro:breadcrumbs title="Khách thuê" link="${createLink(controller: 'renter', action: 'index')}" current="${renterInstance.fullname}"/>
+	<br>
+	<g:if test="${flash.message}">
+		<div class="alert alert-success fade in">
+			${flash.message}
 		</div>
-		<div id="show-renter" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list renter">
-			
-				<g:if test="${renterInstance?.firstName}">
-				<li class="fieldcontain">
-					<span id="firstName-label" class="property-label"><g:message code="renter.firstName.label" default="First Name" /></span>
-					
-						<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${renterInstance}" field="firstName"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${renterInstance?.lastName}">
-				<li class="fieldcontain">
-					<span id="lastName-label" class="property-label"><g:message code="renter.lastName.label" default="Last Name" /></span>
-					
-						<span class="property-value" aria-labelledby="lastName-label"><g:fieldValue bean="${renterInstance}" field="lastName"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${renterInstance?.sex}">
-				<li class="fieldcontain">
-					<span id="sex-label" class="property-label"><g:message code="renter.sex.label" default="Sex" /></span>
-					
-						<span class="property-value" aria-labelledby="sex-label"><g:fieldValue bean="${renterInstance}" field="sex"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${renterInstance?.phone}">
-				<li class="fieldcontain">
-					<span id="phone-label" class="property-label"><g:message code="renter.phone.label" default="Phone" /></span>
-					
-						<span class="property-value" aria-labelledby="phone-label"><g:fieldValue bean="${renterInstance}" field="phone"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${renterInstance?.region}">
-				<li class="fieldcontain">
-					<span id="region-label" class="property-label"><g:message code="renter.region.label" default="Region" /></span>
-					
-						<span class="property-value" aria-labelledby="region-label"><g:link controller="region" action="show" id="${renterInstance?.region?.id}">${renterInstance?.region?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${renterInstance?.dateCreated}">
-				<li class="fieldcontain">
-					<span id="dateCreated-label" class="property-label"><g:message code="renter.dateCreated.label" default="Date Created" /></span>
-					
-						<span class="property-value" aria-labelledby="dateCreated-label"><g:formatDate date="${renterInstance?.dateCreated}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${renterInstance?.lastUpdated}">
-				<li class="fieldcontain">
-					<span id="lastUpdated-label" class="property-label"><g:message code="renter.lastUpdated.label" default="Last Updated" /></span>
-					
-						<span class="property-value" aria-labelledby="lastUpdated-label"><g:formatDate date="${renterInstance?.lastUpdated}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${renterInstance?.placeOfBirth}">
-				<li class="fieldcontain">
-					<span id="placeOfBirth-label" class="property-label"><g:message code="renter.placeOfBirth.label" default="Place Of Birth" /></span>
-					
-						<span class="property-value" aria-labelledby="placeOfBirth-label"><g:fieldValue bean="${renterInstance}" field="placeOfBirth"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${renterInstance?.userID}">
-				<li class="fieldcontain">
-					<span id="userID-label" class="property-label"><g:message code="renter.userID.label" default="User ID" /></span>
-					
-						<span class="property-value" aria-labelledby="userID-label"><g:fieldValue bean="${renterInstance}" field="userID"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${renterInstance?.yearOfBirth}">
-				<li class="fieldcontain">
-					<span id="yearOfBirth-label" class="property-label"><g:message code="renter.yearOfBirth.label" default="Year Of Birth" /></span>
-					
-						<span class="property-value" aria-labelledby="yearOfBirth-label"><g:fieldValue bean="${renterInstance}" field="yearOfBirth"/></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form url="[resource:renterInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${renterInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
+	</g:if>
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="box">
+			<div class="row">
+				<div class="col-md-7 col-sm-7 col-xs-12">
+					<div class="widget box">
+						<div class="widget-header">
+							<h5 style="display: inline;">Thông tin cơ bản </h5>
+							<div class="widget-buttons">
+								<g:form url="[resource:renterInstance, action:'delete']" method="DELETE">
+
+									<g:link rel="renter_edit" class="edit" action="edit" resource="${renterInstance}" style="margin-right: 10px"><i class="icon-edit"></i> </g:link>
+									<g:link style="color: #e25856" onclick="return confirm('Bạn có chắc chắc là sẽ xóa?')" action="delete" resource="${renterInstance}"><i class="icon-trash"></i> </g:link>
+								</g:form>
+							</div>
+						</div>
+						<div class="widget-content">
+
+
+							<ol class="property-list renter">
+
+
+								<li class="fieldcontain">
+									<span id="firstName-label" class="property-label">Họ tên:</span>
+
+									<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${renterInstance}" field="fullname"/></span>
+
+								</li>
+
+
+								<g:if test="${renterInstance?.sex}">
+									<li class="fieldcontain">
+										<span id="sex-label" class="property-label">Giới tính:</span>
+
+										<span class="property-value" aria-labelledby="sex-label">${renterInstance.sex.name}</span>
+
+									</li>
+								</g:if>
+
+								<g:if test="${renterInstance?.phone}">
+									<li class="fieldcontain">
+										<span id="phone-label" class="property-label">Số điện thoại:</span>
+
+										<span class="property-value" aria-labelledby="phone-label"><g:fieldValue bean="${renterInstance}" field="phone"/></span>
+
+									</li>
+								</g:if>
+
+								<g:if test="${renterInstance?.placeOfBirth}">
+									<li class="fieldcontain">
+										<span id="placeOfBirth-label" class="property-label">Nơi sinh:</span>
+
+										<span class="property-value" aria-labelledby="placeOfBirth-label"><g:fieldValue bean="${renterInstance}" field="placeOfBirth"/></span>
+
+									</li>
+								</g:if>
+
+								<g:if test="${renterInstance?.userID}">
+									<li class="fieldcontain">
+										<span id="userID-label" class="property-label">CMND:</span>
+
+										<span class="property-value" aria-labelledby="userID-label"><g:fieldValue bean="${renterInstance}" field="userID"/></span>
+
+									</li>
+								</g:if>
+
+								<g:if test="${renterInstance?.yearOfBirth}">
+									<li class="fieldcontain">
+										<span id="yearOfBirth-label" class="property-label">Năm sinh:</span>
+
+										<span class="property-value" aria-labelledby="yearOfBirth-label">${renterInstance.yearOfBirth}</span>
+
+									</li>
+								</g:if>
+
+							</ol>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5 col-sm-5 col-xs-12">
+					<div class="widget box">
+						<div class="widget-header">
+							<h5>Thông tin liên kết</h5>
+						</div>
+						<div class="widget-content">
+							facebook id:
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+
+					<div class="widget box">
+						<div class="widget-header">
+							<h5>Lịch sử thuê phòng</h5>
+						</div>
+						<div class="widget-content">
+							<table class="table table-hover table-bordered">
+								<thead>
+								<tr>
+									<th>#</th>
+									<th>Từ ngày</th>
+									<th>Đến ngày</th>
+									<th>Phòng</th>
+									<th></th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr>
+									<td>1</td>
+									<td>Joey</td>
+									<td>Greyson</td>
+									<td class="hidden-xs">joey123</td>
+									<td><span class="label label-success">Approved</span></td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Wolf</td>
+									<td>Bud</td>
+									<td class="hidden-xs">wolfy</td>
+									<td><span class="label label-info">Pending</span></td>
+								</tr>
+								<tr>
+									<td>3</td>
+									<td>Darin</td>
+									<td>Alec</td>
+									<td class="hidden-xs">alec82</td>
+									<td><span class="label label-warning">Suspended</span></td>
+								</tr>
+								<tr>
+									<td>4</td>
+									<td>Andrea</td>
+									<td>Brenden</td>
+									<td class="hidden-xs">andry</td>
+									<td><span class="label label-danger">Blocked</span></td>
+								</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
+	</div>
+	<script>
+		$("a[rel='renter_edit']").on('click', function(e) {
+		    e.preventDefault();
+		    var url = this.href
+		    $.post(url, function(html) {
+		        bootbox.dialog({
+					title: 'Sửa thông tin',
+					message: html
+				})
+			})
+		})
+	</script>
 	</body>
 </html>

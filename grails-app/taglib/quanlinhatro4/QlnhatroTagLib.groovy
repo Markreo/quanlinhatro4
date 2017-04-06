@@ -8,4 +8,10 @@ class QlnhatroTagLib {
     def breadcrumbs = { attrs, body ->
         out << "${g.render(template: '/layouts/breadcrumbs', model: [current: attrs.current, link: attrs.link, title: attrs.title])}"
     }
+
+    def mainWidget = { attrs, body ->
+        out << g.render(template: '/template/widgetHead', model: [title: attrs.title])
+        out << body()
+        out << g.render(template: '/template/widgetClose')
+    }
 }

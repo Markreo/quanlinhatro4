@@ -87,7 +87,7 @@
                 </a>
             </li>
             <li>
-                <a href="${createLink(controller: 'region', action: 'index')}">
+                <a href="${createLink(controller: 'region', action: 'list')}">
                     <i class=" icon-bar-chart"></i>
                     Khu quản lí
                 </a>

@@ -20,7 +20,7 @@
         <li>thêm trường roomtype vào room, các giá trị được trong type được parse qua room</li>
         <li>vẫn edit được các giá trị</li>
     </ul> </li>
-    <li></li>
+    <li>chuyển lại template form</li>
 </ul>
 </body>
 </html>

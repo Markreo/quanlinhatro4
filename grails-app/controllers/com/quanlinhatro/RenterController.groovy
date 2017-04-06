@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class RenterController extends BaseController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", update: "PUT"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -25,11 +25,15 @@ class RenterController extends BaseController {
 
     @Transactional
     def save(Renter renterInstance) {
+        println('params: ' + params)
         if (renterInstance == null) {
             notFound()
             return
         }
 
+        renterInstance.region = user.currentRegion
+
+        renterInstance.validate()
         if (renterInstance.hasErrors()) {
             respond renterInstance.errors, view:'create'
             return
@@ -47,7 +51,7 @@ class RenterController extends BaseController {
     }
 
     def edit(Renter renterInstance) {
-        respond renterInstance
+        render(template: 'edit', model: [renterInstance: renterInstance])
     }
 
     @Transactional
@@ -66,7 +70,7 @@ class RenterController extends BaseController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Renter.label', default: 'Renter'), renterInstance.id])
+                flash.message = 'Thông tin đã được cập nhật!'
                 redirect renterInstance
             }
             '*'{ respond renterInstance, [status: OK] }
@@ -82,14 +86,8 @@ class RenterController extends BaseController {
         }
 
         renterInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Renter.label', default: 'Renter'), renterInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+        flash.message = "Đã xóa 1 khách thuê"
+        redirect action:"index", method:"GET"
     }
 
     protected void notFound() {

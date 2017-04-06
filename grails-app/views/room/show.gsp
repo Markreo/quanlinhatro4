@@ -81,31 +81,33 @@
                 <div class="page-show-body">
                     <div class="row">
                         <div class="col-md-8 col-sm-7 col-xs-12">
-                            <div id="room_show_use">
-                                <g:form controller="use" action="save" class="form-horizontal">
 
-                                   %{-- <table width="100%" class="qlnhatro-table2">
-                                        <tr>
-                                            <th>Tên</th>
-                                            <th>Đơn vị</th>
-                                            <th class="right">Đơn giá</th>
-                                        </tr>
-                                        <g:each in="${room.use}" var="use">
-                                            <tr>
-                                                <td>${use.name}</td>
-                                                <td>${use.unit.name}</td>
-                                                <td class="right"><g:formatNumber number="${use.currentPrice}" format="###,###,###" locale="en"/> đ </td>
-                                            </tr>
-                                        </g:each>
-                                    </table>--}%
-                                    <table class="table table-hover table-bordered">
+                            <qlnhatro:mainWidget>
+                                <div id="room_show_use" style="padding: 10px">
+
+
+                                    %{-- <table width="100%" class="qlnhatro-table2">
+                                         <tr>
+                                             <th>Tên</th>
+                                             <th>Đơn vị</th>
+                                             <th class="right">Đơn giá</th>
+                                         </tr>
+                                         <g:each in="${room.use}" var="use">
+                                             <tr>
+                                                 <td>${use.name}</td>
+                                                 <td>${use.unit.name}</td>
+                                                 <td class="right"><g:formatNumber number="${use.currentPrice}" format="###,###,###" locale="en"/> đ </td>
+                                             </tr>
+                                         </g:each>
+                                     </table>--}%
+                                    <table class="table table-hover table-bordered" style="background: white">
                                         <thead>
                                         <tr>
                                             <th  class="text-center hidden-xs">#</th>
                                             <th>Tên</th>
                                             <th class="hidden-xs">Đơn vị</th>
                                             <th>Đơn giá</th>
-                                            <th width="155px">Cập nhật</th>
+                                            <th width="155px">Cập nhật <span class="label label-success"><i class="icon-plus"></i> </span></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -127,8 +129,9 @@
                                         </tbody>
                                     </table>
 
-                                </g:form>
-                            </div>
+                                </div>
+                            </qlnhatro:mainWidget>
+
 
                             <div>
                                 chart
@@ -136,12 +139,7 @@
                             <br>
                         </div>
                         <div class="col-md-4 col-sm-5 col-xs-12" >
-                            <div>
-                                <ul>
-                                    <li>Đang cho thuê: Danh sách người thuê</li>
-                                    <li>Đang --------: Lịch sử thuê phòng</li>
-                                </ul>
-                            </div>
+                            <g:render template="/renter/orderRender" model="[room: room]"/>
                             <br>
                             <div style="border: 1px solid blue">
                                 Note
@@ -153,5 +151,10 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $("#content").css('background','#eee')
+    })
+</script>
 </body>
 </html>

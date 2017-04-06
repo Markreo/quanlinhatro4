@@ -3,6 +3,24 @@ package com.quanlinhatro
 class RegionController extends BaseController {
 
     def index() {
+        redirect(action: 'list')
+    }
+
+    def list() {
+        render(view: 'list', mode: [regions: user.region])
+    }
+
+    def create() {
+        render (view: 'edit', model: [region: new Region()])
+    }
+
+    def edit(long id) {
+        def region = Region.get(id)
+        if(region) {
+            render(view: 'edit', model: [region: region])
+        } else {
+            render(view: '/notFound')
+        }
 
     }
 

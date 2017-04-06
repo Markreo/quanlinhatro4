@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<qlnhatro:breadcrumbs current="Tạo một khu quản lí"/>
+<qlnhatro:breadcrumbs current="Danh sách phòng trọ"/>
 <div class="row">
 
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -34,6 +34,10 @@
                     <a id="createRoom" href="${createLink(controller: 'room', action: 'create')}" class="btn btn-default" style="position: absolute; top: 16px; right: 30px"><i class="icon-plus"></i> Thêm</a>
             </div>
             <table class="qlnhatro-table1">
+                <g:each in="${rooms}" var="room">
+                    <g:render template="line" model="[room: room]"/>
+
+                </g:each>
                 <tr>
                     <td><img src="${resource(file: 'images/home_1.png')}" width="38px" height="38px"/> </td>
                     <td>Phòng 1 - Đang trống</td>

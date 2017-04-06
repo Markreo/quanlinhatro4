@@ -44,4 +44,10 @@ class Renter {
     static mapping = {
         table('ql_renter')
     }
+
+    static transients = ['fullname']
+
+    String getFullname() {
+        return lastName + " " + firstName
+    }
 }
