@@ -8,7 +8,7 @@
         </ul>
 
         <!-- Logo -->
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="${createLink(controller: 'home')}">
             <img src="${resource(file:"assets/img/logo.png")}" alt="logo" />
             <strong>ME</strong>LON
         </a>

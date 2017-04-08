@@ -165,7 +165,7 @@
 		}
 		
 		// touchList.identifiedTouch() does not exist in
-		// webkit yet… we must do the search ourselves...
+		// webkit yetï¿½ we must do the search ourselves...
 		
 		i = -1;
 		l = touchList.length;
@@ -571,9 +571,12 @@
 			    l = props.length;
 			
 			while (l--) {
-				if (jQuery.event.props.indexOf(props[l]) === -1) {
-					jQuery.event.props.push(props[l]);
+				if(typeof  jQuery.event.props !== 'undefined') {
+                    if (jQuery.event.props.indexOf(props[l]) === -1) {
+                        jQuery.event.props.push(props[l]);
+                    }
 				}
+
 			}
 		})(jQuery);
 	};

@@ -30,6 +30,8 @@
 					
 						<g:sortableColumn property="firstName" title="Họ tên" />
 
+						<g:sortableColumn property="room" title="Phòng" />
+
 						<g:sortableColumn property="sex" title="Giới tính" />
 					
 						<g:sortableColumn property="yearOfBirth" title="Năm sinh" />
@@ -43,12 +45,16 @@
 					</tr>
 				</thead>
 				<tbody>
+				<g:set var="rooms" value="${com.quanlinhatro.Room.list()}"/>
 				<g:each in="${renterInstanceList}" status="i" var="renterInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
 						<td class="text-center hidden-xs">${i + 1}</td>
 
 						<td><g:link action="show" id="${renterInstance.id}">${fieldValue(bean: renterInstance, field: "fullname")}</g:link></td>
+
+						<g:set var="room" value="${rooms?.find {renterInstance in it?.renter}}"/>
+						<td><g:link controller="room" action="show" id="${room?.id}">${room?.name}</g:link></td>
 
 						<td>${fieldValue(bean: renterInstance, field: "sex.name")}</td>
 
@@ -68,5 +74,6 @@
 		</div>
 			</div>
 		</div>
+	</div>
 	</body>
 </html>

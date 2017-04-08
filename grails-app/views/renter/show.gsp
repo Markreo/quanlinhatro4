@@ -30,65 +30,72 @@
 							</div>
 						</div>
 						<div class="widget-content">
+							<div class="row">
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div style="border: 2px solid rgba(238,238,238,0.6); width: 150px; height: 200px; margin: auto"></div>
+								</div>
 
 
-							<ol class="property-list renter">
+								<div class="col-md-8 col-sm-8 col-xs-12">
+									<ol class="property-list renter">
 
 
-								<li class="fieldcontain">
-									<span id="firstName-label" class="property-label">Họ tên:</span>
+										<li class="fieldcontain">
+											<span id="firstName-label" class="property-label">Họ tên:</span>
 
-									<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${renterInstance}" field="fullname"/></span>
+											<span class="property-value" aria-labelledby="firstName-label"><g:fieldValue bean="${renterInstance}" field="fullname"/></span>
 
-								</li>
+										</li>
 
 
-								<g:if test="${renterInstance?.sex}">
-									<li class="fieldcontain">
-										<span id="sex-label" class="property-label">Giới tính:</span>
+										<g:if test="${renterInstance?.sex}">
+											<li class="fieldcontain">
+												<span id="sex-label" class="property-label">Giới tính:</span>
 
-										<span class="property-value" aria-labelledby="sex-label">${renterInstance.sex.name}</span>
+												<span class="property-value" aria-labelledby="sex-label">${renterInstance.sex.name}</span>
 
-									</li>
-								</g:if>
+											</li>
+										</g:if>
 
-								<g:if test="${renterInstance?.phone}">
-									<li class="fieldcontain">
-										<span id="phone-label" class="property-label">Số điện thoại:</span>
+										<g:if test="${renterInstance?.phone}">
+											<li class="fieldcontain">
+												<span id="phone-label" class="property-label">Số điện thoại:</span>
 
-										<span class="property-value" aria-labelledby="phone-label"><g:fieldValue bean="${renterInstance}" field="phone"/></span>
+												<span class="property-value" aria-labelledby="phone-label"><g:fieldValue bean="${renterInstance}" field="phone"/></span>
 
-									</li>
-								</g:if>
+											</li>
+										</g:if>
 
-								<g:if test="${renterInstance?.placeOfBirth}">
-									<li class="fieldcontain">
-										<span id="placeOfBirth-label" class="property-label">Nơi sinh:</span>
+										<g:if test="${renterInstance?.placeOfBirth}">
+											<li class="fieldcontain">
+												<span id="placeOfBirth-label" class="property-label">Nơi sinh:</span>
 
-										<span class="property-value" aria-labelledby="placeOfBirth-label"><g:fieldValue bean="${renterInstance}" field="placeOfBirth"/></span>
+												<span class="property-value" aria-labelledby="placeOfBirth-label"><g:fieldValue bean="${renterInstance}" field="placeOfBirth"/></span>
 
-									</li>
-								</g:if>
+											</li>
+										</g:if>
 
-								<g:if test="${renterInstance?.userID}">
-									<li class="fieldcontain">
-										<span id="userID-label" class="property-label">CMND:</span>
+										<g:if test="${renterInstance?.userID}">
+											<li class="fieldcontain">
+												<span id="userID-label" class="property-label">CMND:</span>
 
-										<span class="property-value" aria-labelledby="userID-label"><g:fieldValue bean="${renterInstance}" field="userID"/></span>
+												<span class="property-value" aria-labelledby="userID-label"><g:fieldValue bean="${renterInstance}" field="userID"/></span>
 
-									</li>
-								</g:if>
+											</li>
+										</g:if>
 
-								<g:if test="${renterInstance?.yearOfBirth}">
-									<li class="fieldcontain">
-										<span id="yearOfBirth-label" class="property-label">Năm sinh:</span>
+										<g:if test="${renterInstance?.yearOfBirth}">
+											<li class="fieldcontain">
+												<span id="yearOfBirth-label" class="property-label">Năm sinh:</span>
 
-										<span class="property-value" aria-labelledby="yearOfBirth-label">${renterInstance.yearOfBirth}</span>
+												<span class="property-value" aria-labelledby="yearOfBirth-label">${renterInstance.yearOfBirth}</span>
 
-									</li>
-								</g:if>
+											</li>
+										</g:if>
 
-							</ol>
+									</ol>
+								</div>
+							</div>
 
 						</div>
 					</div>
@@ -100,6 +107,21 @@
 						</div>
 						<div class="widget-content">
 							facebook id:
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5 col-sm-5 col-xs-12">
+					<div class="widget box">
+						<div class="widget-header">
+							<h5>Phòng hiện tại</h5>
+						</div>
+						<div class="widget-content">
+							<g:set var="rooms" value="${com.quanlinhatro.Room.list()}"/>
+							<g:set var="room" value="${rooms?.find {renterInstance in it?.renter}}"/>
+							<label>Phòng: </label>
+							<g:select id="renter_select_room" class="form-control" name="roomId" from="${com.quanlinhatro.Room.findAllByRegion(renterInstance.region)}" optionValue="name" optionKey="id" value="${room?.id}" noSelection="['':'--Chọn phòng--']"/>
+
+							<label id="renter_select_room_message" class="has-error help-block"/>
 						</div>
 					</div>
 				</div>
@@ -171,6 +193,19 @@
 				})
 			})
 		})
+
+		$("#renter_select_room").on('change', function () {
+		    var _self = $(this);
+		    console.log('change')
+			$.post("${createLink(controller: 'room', action: 'addToRenter')}", {id: _self.val(), renterId: ${renterInstance.id}}, function (resp) {
+			    if(resp == 'true') {
+                    $("#renter_select_room_message").text('Đã lưu!')
+				}
+                setInterval(function () {
+                    $("#renter_select_room_message").text('')
+                }, 3000);
+            })
+        })
 	</script>
 	</body>
 </html>

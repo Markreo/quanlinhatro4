@@ -12,7 +12,7 @@ class Region {
     String address
     String note
     static belongsTo = [user: User]
-    static hasMany = [room: Room, default: DefaultRegion, renter: Renter]
+    static hasMany = [room: Room, defaultRegion: DefaultRegion, renter: Renter]
 
     Date dateCreated
     Date lastUpdated
@@ -22,6 +22,8 @@ class Region {
         address nullable: true
         user nullable: false
         room nullable: true
+        defaultRegion nullable: true
+        renter nullable: true
         note nullable: true
         dateCreated()
     }
@@ -29,5 +31,11 @@ class Region {
     static mapping = {
         table('ql_region')
         note type: 'text'
+    }
+
+    static transients = ['defaultTienPhong']
+
+    DefaultRegion getDefaultTienPhong() {
+        return this.defaultRegion.find { it.tienphong }
     }
 }

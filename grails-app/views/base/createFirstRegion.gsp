@@ -8,14 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title></title>
+    <title>Tạo Khu/Dãy trọ</title>
     <meta name="layout" content="main"/>
 </head>
 
 <body>
 
 
-<qlnhatro:breadcrumbs current="Tạo một khu quản lí"/>
+<qlnhatro:breadcrumbs current="Tạo một Khu/Dãy trọ"/>
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -23,7 +23,7 @@
            <g:form url="[controller: 'region', action: 'saveFirstRegion', id: user.id]" class="form-horizontal" id="createFirstRegion">
 
                <div class="form-group">
-                   <h3 class="title">Tạo một khu quản lí</h3>
+                   <h3 class="title">Tạo một Khu/Dãy trọ</h3>
                </div>
 
 

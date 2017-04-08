@@ -53,5 +53,32 @@ class Room{
 
     static mapping = {
         table('ql_room')
+        renter joinTable: [name: 'ql_renter',
+                           key:'room_id']
+    }
+
+    static transients = ['getName', 'setName', 'getUsePhong', 'getUseDien', 'getUseNuoc']
+
+    def setName(String name) {
+        name = name.replace('Phòng', '')
+        name = name.replace('phòng', '')
+        name = name.replace('phong', '')
+        this.name = name.trim()
+    }
+
+    String getName() {
+        return 'Phòng ' + this.name
+    }
+
+    Use getUsePhong() {
+
+    }
+
+    Use getUseDien() {
+
+    }
+
+    Use getUseNuoc() {
+
     }
 }

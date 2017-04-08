@@ -9,7 +9,7 @@
     <div class="form-group">
         <label class="col-md-3 col-sm-4 col-xs-4 no-padding-right control-label text-right" >Giá phòng:</label>
         <div class="col-md-9 col-sm-8 col-xs-8">
-            <input type="text" name="room.price" class="form-control required" required>
+            <input type="text" name="room.price" class="form-control required" required value="${region?.defaultTienPhong?.currentPrice}">
         </div>
     </div>
     <g:if test="${ng}">

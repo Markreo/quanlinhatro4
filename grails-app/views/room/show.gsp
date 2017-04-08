@@ -8,12 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Phòng ${room.name}</title>
+    <title>${room.name}</title>
     <meta name="layout"content="main"/>
 </head>
 
 <body>
-<qlnhatro:breadcrumbs current="Phòng ${room.name}"/>
+<qlnhatro:breadcrumbs current="${room.name}"/>
 <div class="row">
 
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -50,16 +50,17 @@
                                 <table class="infor">
                                     <tr>
                                         <td>Số điện</td>
-                                        <td>123</td>
+                                        <td>${room.useDien?.currentValue ?: 0} (Kilowatt)</td>
                                     </tr>
                                     <tr>
                                         <td>Số nước</td>
-                                        <td>47</td>
+                                        <td>${room.useDien?.currentValue ?: 0} (m³)</td>
                                     </tr>
 
                                     <tr>
                                         <td>Cập nhật</td>
-                                        <td>${new Date().format('dd-MM-yyyy')}</td>
+                                        <g:set var="lastUpdate" value="${room.useDien?.lastUpdated > room.useNuoc?.lastUpdated ? room.useDien?.lastUpdated : room.useNuoc?.lastUpdated}"/>
+                                        <td>${(lastUpdate ?: room.lastUpdated)?.format('dd-MM-yyyy')}</td>
                                     </tr>
                                 </table>
                                 <div class="clearfix"></div>

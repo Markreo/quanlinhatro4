@@ -12,7 +12,7 @@ class RenterController extends BaseController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Renter.list(params), model:[renterInstanceCount: Renter.count()]
+        respond Renter.findAllByRegion(user.currentRegion, params), model:[renterInstanceCount: Renter.count()]
     }
 
     def show(Renter renterInstance) {

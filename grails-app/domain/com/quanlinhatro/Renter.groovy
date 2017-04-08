@@ -24,6 +24,7 @@ class Renter {
     int yearOfBirth
 
     static belongsTo = [region: Region]
+    Room room
 
     Date dateCreated
     Date lastUpdated
@@ -38,6 +39,7 @@ class Renter {
         yearOfBirth nullable: true
 
         region nullable: false
+        room nullable: true
         dateCreated()
     }
 

@@ -12,7 +12,7 @@ class RoomController extends BaseController{
 
     def formCreate() {
         def df = DefaultRegion.countByRegionAndUnitAndTienphong(user.currentRegion, Unit.NG, true)
-        render(template: 'formCreate', model: [ng: df != 0])
+        render(template: 'formCreate', model: [ng: df != 0, region: user.currentRegion])
     }
 
     def save() {
@@ -49,6 +49,21 @@ class RoomController extends BaseController{
             response.status = 404
             render(view: '/notFound')
         }
+
+    }
+
+    def addToRenter(long id) {
+        def room = Room.get(id)
+        println(room)
+        if(room) {
+            def renter = Renter.get(params.renterId as long)
+            println(renter)
+            println(renter && !(renter in room.renter))
+            if(renter) {
+                renter()
+            }
+        }
+        return render('false')
 
     }
 }
