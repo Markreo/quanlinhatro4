@@ -39,4 +39,10 @@ class DefaultRegion {
                 currentPrice: this.currentPrice, currentValue: currentValue,
                 tiendien: this.tiendien, tienphong: this.tienphong, tiennuoc: this.tiennuoc)
     }
+
+    static transients = ['recommend']
+
+    long getRecommend(RoomType type) {
+        return RecommendPrice.findByDefaultRegionAndRoomType(this, type).price ?: 0
+    }
 }

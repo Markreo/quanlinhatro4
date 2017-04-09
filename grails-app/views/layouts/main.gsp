@@ -131,8 +131,8 @@
 	<g:render template="/layouts/sidebar"/>
 	<!-- /Sidebar -->
 
-	<div >
-		<div class="container" id="content">
+	<div id="content">
+		<div class="container" >
 			<g:layoutBody/>
 		</div>
 	</div>

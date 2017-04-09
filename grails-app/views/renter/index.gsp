@@ -17,11 +17,7 @@
 
 			<a id="createRenter" href="${createLink(controller: 'renter', action: 'create')}" class="btn btn-default" style="position: absolute; top: 16px; right: 30px"><i class="icon-plus"></i> Thêm</a>
 			<br>
-			<g:if test="${flash.message}">
-				<div class="alert alert-success fade in">
-					${flash.message}
-				</div>
-			</g:if>
+				<qlnhatro:message/>
 			<table class="table table-hover table-bordered">
 			<thead>
 					<tr>

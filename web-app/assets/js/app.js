@@ -417,7 +417,7 @@ var App = function() {
 	}
 
 	var handleWidgets = function() {
-		$('.widget .toolbar .widget-collapse').click(function() {
+		$('.widget .widget-header .widget-collapse').click(function() {
 			var widget         = $(this).parents(".widget");
 			var widget_content = widget.children(".widget-content");
 			var widget_chart   = widget.children(".widget-chart");

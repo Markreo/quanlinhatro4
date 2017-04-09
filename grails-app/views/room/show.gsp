@@ -41,7 +41,7 @@
                                     </tr>
                                     <tr>
                                         <td>Loại phòng</td>
-                                        <td>Loại 2 </td>
+                                        <td>${room.type?.name} </td>
                                     </tr>
                                 </table>
                                 <div class="clearfix"></div>

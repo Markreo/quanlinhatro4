@@ -19,6 +19,7 @@
         <li>Thêm model trong mục setting của region</li>
         <li>thêm trường roomtype vào room, các giá trị được trong type được parse qua room</li>
         <li>vẫn edit được các giá trị</li>
+        <li>Khi cập nhật loại phòng x -> hỏi có cập nhật lại tất cả những phòng có loại phòng x không -----</li>
     </ul> </li>
     <li>chuyển lại template form</li>
     <li>chức năng chuyển phòng</li>
@@ -29,6 +30,12 @@
         <li>Tạo thêm domain Price(phạm vi giá trị từ x -> y, giá, thuộc về Use u)</li>
         <li>Tạo phòng => price lưu vào Price mặc định(phạm vi từ 0 -> 0, giá)</li>
         <li>Tạo thêm mức giá => show -> setting</li>
+    </ul>
+    </li>
+    <li>input[rel='VND'], jquery and css:
+        <ul>
+        <li>text color: 'transparent' -> focus: #444</li>
+        <li>change->parse value -> show</li>
     </ul>
     </li>
 </ul>

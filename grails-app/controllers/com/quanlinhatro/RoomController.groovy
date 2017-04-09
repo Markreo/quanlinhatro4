@@ -15,6 +15,9 @@ class RoomController extends BaseController{
         render(template: 'formCreate', model: [ng: df != 0, region: user.currentRegion])
     }
 
+    def formCreateMore() {
+    }
+
     def save() {
         def room = new Room(params.get("room"))
         room.region = user.currentRegion

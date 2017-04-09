@@ -12,7 +12,7 @@ class Region {
     String address
     String note
     static belongsTo = [user: User]
-    static hasMany = [room: Room, defaultRegion: DefaultRegion, renter: Renter]
+    static hasMany = [room: Room, defaultRegion: DefaultRegion, renter: Renter, roomType: RoomType]
 
     Date dateCreated
     Date lastUpdated
@@ -24,6 +24,7 @@ class Region {
         room nullable: true
         defaultRegion nullable: true
         renter nullable: true
+        roomType nullable: true
         note nullable: true
         dateCreated()
     }

@@ -28,8 +28,10 @@ class Room{
                       lease: Lease,
                       use: Use]
 
-    long price //to service
+    long price //to service//
     long amount = 0
+
+    RoomType type
 
     int dueDate = 0 //day of month
     int maxRenter
@@ -48,6 +50,7 @@ class Room{
         maxRenter nullable: true
         dueDate nullable: false
         note  nullable: true
+        type nullable: true
         dateCreated()
     }
 

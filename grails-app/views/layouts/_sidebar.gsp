@@ -98,11 +98,25 @@
                     Camera
                 </a>
             </li>
-            <li>
-                <a href="${createLink(controller: 'room', action: 'index')}">
+            <li class="${controllerName  == 'profile' ? 'open' :''}">
+                <a href="javascript:void(0);">
                     <i class="icon-cog"></i>
                     Cài đặt
-                </a>
+                    <i class="arrow icon-angle-down"></i></a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="${createLink(controller: 'roomType', action: 'index')}">
+                            <i class="icon-sitemap"></i>
+                            Loại phòng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="form_layouts.html">
+                            <i class=" icon-credit-card"></i>
+                            Tài khoản
+                        </a>
+                    </li>
+                </ul>
             </li>
 
         </ul>

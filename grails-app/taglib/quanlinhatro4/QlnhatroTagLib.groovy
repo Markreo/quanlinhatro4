@@ -14,4 +14,8 @@ class QlnhatroTagLib {
         out << body()
         out << g.render(template: '/template/widgetClose')
     }
+
+    def message = { attrs, body ->
+            out << g.render(template: '/template/message')
+    }
 }
