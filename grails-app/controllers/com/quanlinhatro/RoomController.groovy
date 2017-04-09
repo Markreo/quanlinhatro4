@@ -16,6 +16,9 @@ class RoomController extends BaseController{
     }
 
     def formCreateMore() {
+        def room = new Room(params.get("room"))
+        def df = DefaultRegion.countByRegionAndUnitAndTienphong(user.currentRegion, Unit.NG, true)
+        render(view: 'formCreateMore', model: [room: room, ng: df != 0, region: user.currentRegion])
     }
 
     def save() {
@@ -31,6 +34,43 @@ class RoomController extends BaseController{
         DefaultRegion.findAllByRegion(user.currentRegion).each { df->
             room.addToUse(df.parseToUse())
         }
+
+        if(room.hasErrors() || !room.save(flush: true))
+        {
+            println ('err save use :' + room.errors)
+        }
+
+        redirect(action: 'show', model: [id: room.id])
+    }
+
+    def saveMore() {
+        def room = new Room(params.get("room"))
+        room.region = user.currentRegion
+
+
+
+        if(room.hasErrors() || !room.save(flush: true)) {
+            println "errr- " + room.errors
+        }
+
+        try {
+            def names = params.getList('default.name')
+            def prices = params.getList('default.currentPrice')
+            def specials = params.getList('special')
+            println specials
+            def units = params.getList('default.unit')
+            names.eachWithIndex { String name, int i ->
+                if ((prices[i] as long) > 0) {
+                    def use = new Use(room: room, name: names[i], currentPrice: prices[i] as long, unit: Unit.valueOf(units[i]))
+                    use.tiendien = (specials[i] == 'tiendien')
+                    use.tienphong = (specials[i] == 'tienphong')
+                    use.tiennuoc = (specials[i] == 'tiennuoc')
+                    if (use.hasErrors() || !use.save(flush: true)) {
+                        println('cannot save use')
+                    }
+                }
+            }
+        } catch (Exception ex) {}
 
         if(room.hasErrors() || !room.save(flush: true))
         {

@@ -1,4 +1,4 @@
-<g:form controller="room" action="save" class="form-horizontal">
+<g:form class="form-horizontal">
     <div class="form-group">
         <label class="col-md-3 col-sm-4 col-xs-4 no-padding-right control-label text-right" >Tên phòng:</label>
         <div class="col-md-9 col-sm-8 col-xs-8" style="position: relative">
@@ -43,8 +43,8 @@
     </div>
     <div class="form-group pull-right">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <a href="${createLink(controller: 'room', action: 'formCreateMore')}" class="btn btn-defaut">Form đầy đủ</a>
-            <button class="btn btn-default">Đăng kí</button>
+            <g:actionSubmit value="Form Đầy Đủ" action="formCreateMore" class="btn"/>
+            <g:actionSubmit value="Lưu" action="save" class="btn"/>
         </div>
     </div>
     <div class="clearfix"></div>

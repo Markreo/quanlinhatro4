@@ -40,7 +40,7 @@ class Room{
     Date lastUpdated
 
     static constraints = {
-        name nullable: false, unique: ['region']
+        name nullable: false
         status nullable: false
         region nullable: false
         renter nullable: true

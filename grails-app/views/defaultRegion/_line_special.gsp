@@ -1,4 +1,4 @@
-<g:if test="${special == 'tiendien'}">
+<g:if test="${special == 'tiendien' || df?.tiendien}">
     <div class="form-group">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -14,16 +14,23 @@
                     </select>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3 no-padding-right">
-                    <input class="form-control" name="default.currentPrice" type="text" placeholder="Tiền điện" required/>
+                    <input class="form-control" name="default.currentPrice" type="text" placeholder="Tiền điện" required value="${df?.currentPrice}"/>
                 </div>
                 <div class="col-md-1 col-sm-1 col-xs-1 no">
-                    <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
+                    <g:if test="${df?.id}">
+                        <div class="checkbox">
+                            <label><input rel="yes" type="checkbox" checked></label>
+                        </div>
+                    </g:if>
+                    <g:else>
+                        <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
+                    </g:else>
                 </div>
             </div>
         </div>
     </div>
 </g:if>
-<g:if test="${special == 'tiennuoc'}">
+<g:elseif test="${special == 'tiennuoc' || df?.tiennuoc}">
     <div class="form-group">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -39,16 +46,23 @@
                     </select>
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-3 no-padding-right">
-                    <input class="form-control" name="default.currentPrice" type="text"  placeholder="Tiền nước" required/>
+                    <input class="form-control" name="default.currentPrice" type="text"  placeholder="Tiền nước" required value="${df?.currentPrice}"/>
                 </div>
                 <div class="col-md-1 col-sm-1 col-xs-1 no">
-                    <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
+                    <g:if test="${df?.id}">
+                        <div class="checkbox">
+                            <label><input rel="yes" type="checkbox" checked></label>
+                        </div>
+                    </g:if>
+                    <g:else>
+                        <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
+                    </g:else>
                 </div>
             </div>
         </div>
     </div>
-</g:if>
-<g:if test="${special == 'tienphong'}">
+</g:elseif>
+<g:elseif test="${special == 'tienphong' || df?.tienphong}">
     <div class="form-group">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -65,16 +79,23 @@
                 </div>
 
                 <div class="col-md-3 col-sm-3 col-xs-3 no-padding-right">
-                    <input class="form-control" name="default.currentPrice" type="text" placeholder="Tiền phòng" required/>
+                    <input class="form-control" name="default.currentPrice" type="text" placeholder="Tiền phòng" required value="${df?.currentPrice}"/>
                 </div>
                 <div class="col-md-1 col-sm-1 col-xs-1 no">
-                    <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
+                    <g:if test="${df?.id}">
+                        <div class="checkbox">
+                            <label><input rel="yes" type="checkbox" checked disabled></label>
+                        </div>
+                    </g:if>
+                    <g:else>
+                        <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
+                    </g:else>
                 </div>
             </div>
         </div>
     </div>
-</g:if>
-<g:if test="${special == 'null'}">
+</g:elseif>
+<g:else>
     <div class="form-group">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
@@ -89,10 +110,17 @@
                 <div class="col-md-3 col-sm-3 col-xs-3 no-padding-right">
                     <input class="form-control" name="default.currentPrice" type="text" value="${df.currentPrice}" placeholder="Giá" required/>
                 </div>
-                <div class="col-md-1 col-sm-1 col-xs-1 no">
-                    <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
+                <div class="col-md-1 col-sm-1 col-xs-1 no-padding-right">
+                    <g:if test="${df?.id}">
+                        <div class="checkbox">
+                            <label><input rel="yes" type="checkbox" checked></label>
+                        </div>
+                    </g:if>
+                    <g:else>
+                        <button rel="remove" class="btn btn-xs btn-danger" style="border-radius: 50%; padding: 0 5px; margin-top:5px"><i class="icon-minus"></i></button>
+                    </g:else>
                 </div>
             </div>
         </div>
     </div>
-</g:if>
+</g:else>
