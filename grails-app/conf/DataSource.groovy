@@ -28,19 +28,14 @@ environments {
     }
     production {
         dataSource {
-            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:postgresql://localhost:5432/quanlinhatro"
-            properties {
-                maxActive = -1
-                minEvictableIdleTimeMillis=1800000
-                timeBetweenEvictionRunsMillis=1800000
-                numTestsPerEvictionRun=3
-                testOnBorrow=true
-                testWhileIdle=true
-                testOnReturn=false
-                validationQuery="SELECT 1"
-                jdbcInterceptors="ConnectionState"
-            }
+            dbCreate = "update"
+            driverClassName = "org.postgresql.Driver"
+
+            uri = new URI(System.env.DATABASE_URL?:"postgres://sbvyowcqayafay:45eb2faf75d7a1f6353c91e6e3440b3363c6ffe5d2cfd297686f24c4a92ac66d@ec2-23-23-244-83.compute-1.amazonaws.com:5432/d4qtilcimog7ln")
+
+            url = "jdbc:postgresql://" + uri.host + ":" + uri.port + uri.path
+            username = uri.userInfo.split(":")[0]
+            password = uri.userInfo.split(":")[1]
         }
     }
 }
